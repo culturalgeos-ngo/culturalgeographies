@@ -1,5 +1,110 @@
-.current-date {
-  content: "2026-04-26 22:05:27";
-  font-size: 1.2em;
-  color: #333;
+:root {
+    --color-black: #000000;
+    --color-white: #FFFFFF;
+    --color-gray-light: #F0F0F0;
+    --color-gray: #888888;
+    --color-gray-dark: #333333;
+    --font-serif: 'Spectral', serif;
+    --font-mono: 'IBM Plex Mono', monospace;
+    --font-sans: 'IBM Plex Sans', sans-serif;
+    --spacing-small: 8px;
+    --spacing-medium: 16px;
+    --spacing-large: 32px;
+}
+
+body {
+    font-family: var(--font-sans);
+    background-color: var(--color-white);
+    color: var(--color-gray-dark);
+    margin: 0;
+}
+
+.site-header {
+    background-color: var(--color-gray-light);
+    padding: var(--spacing-medium);
+    text-align: center;
+}
+
+.site-nav {
+    display: flex;
+    justify-content: center;
+    margin-top: var(--spacing-small);
+}
+
+.site-nav a {
+    margin: 0 var(--spacing-medium);
+    text-decoration: none;
+    color: var(--color-gray-dark);
+}
+
+.hero {
+    background-color: var(--color-gray);
+    padding: var(--spacing-large);
+    text-align: center;
+}
+
+.hero .tagline {
+    font-size: 2rem;
+    color: var(--color-white);
+}
+
+.feed {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: var(--spacing-medium);
+    padding: var(--spacing-medium);
+}
+
+.filter-buttons {
+    display: flex;
+    justify-content: center;
+    margin-bottom: var(--spacing-medium);
+}
+
+.project-card {
+    background-color: var(--color-white);
+    border: 1px solid var(--color-gray-light);
+    border-radius: 8px;
+    padding: var(--spacing-medium);
+}
+
+.team-card {
+    background-color: var(--color-white);
+    border: 1px solid var(--color-gray-light);
+    border-radius: 8px;
+    padding: var(--spacing-medium);
+    text-align: center;
+}
+
+.note-card {
+    background-color: var(--color-gray-light);
+    border: 1px solid var(--color-gray);
+    border-radius: 8px;
+    padding: var(--spacing-medium);
+}
+
+.photo-report-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: var(--spacing-medium);
+}
+
+.page-header {
+    font-size: 2.5rem;
+    padding: var(--spacing-medium);
+}
+
+footer {
+    background-color: var(--color-gray);
+    text-align: center;
+    padding: var(--spacing-medium);
+}
+
+@media (max-width: 768px) {
+    .hero .tagline {
+        font-size: 1.5rem;
+    }
+    .site-nav {
+        flex-direction: column;
+    }
 }
