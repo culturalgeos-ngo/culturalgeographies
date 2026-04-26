@@ -1,0 +1,43 @@
+title: Культурні географії
+title_en: Cultural Geographies
+description: Громадська організація, що досліджує культуру, простір і спільноти
+description_en: NGO researching culture, space and communities
+baseurl: "/culturalgeographies"
+url: "https://culturalgeos-ngo.github.io"
+
+# Build
+markdown: kramdown
+highlighter: rouge
+permalink: /:categories/:title/
+
+# Plugins (all supported by GitHub Pages)
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+  - jekyll-sitemap
+
+# Collections
+collections:
+  projects:
+    output: true
+    permalink: /projects/:name/
+
+# Defaults
+defaults:
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"
+      lang: "uk"
+  - scope:
+      path: ""
+      type: "projects"
+    values:
+      layout: "project"
+
+# Exclude
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - README.md
