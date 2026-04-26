@@ -1,0 +1,29 @@
+---
+layout: default
+---
+
+<div class="page-header">
+  <div class="container--narrow">
+    <p class="page-header__section">
+      {% if page.category == 'photoreport' %}
+        <a href="{{ '/publikatsii/' | relative_url }}">Фотозвіти</a>
+      {% else %}
+        <a href="{{ '/publikatsii/' | relative_url }}">Методологічні нотатки</a>
+      {% endif %}
+    </p>
+    <h1>{{ page.title }}</h1>
+    <p class="mono" style="margin-top:1rem;">{{ page.date | date: '%d.%m.%Y' }}</p>
+  </div>
+</div>
+
+<div class="page-content">
+  <div class="container--narrow">
+
+    {% if page.image %}
+    <img src="{{ page.image | relative_url }}" alt="{{ page.title }}" style="width:100%; margin-bottom:2rem;">
+    {% endif %}
+
+    {{ content }}
+
+  </div>
+</div>
