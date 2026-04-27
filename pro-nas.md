@@ -52,6 +52,7 @@ permalink: /pro-nas/
 
 <section class="team-section">
   <p class="team-section__label">Актуальна команда</p>
+  <div class="container--narrow">
   <div class="team-grid">
 
     <div class="team-card">
@@ -126,5 +127,6 @@ permalink: /pro-nas/
       <p class="team-card__bio">Педагогиня, що розробляла і вела освітні програми для дітей і молоді.</p>
     </div>
 
+  </div>
   </div>
 </section>
