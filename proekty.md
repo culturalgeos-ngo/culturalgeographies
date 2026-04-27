@@ -20,12 +20,11 @@ permalink: /proekty/
         <button class="filter-btn active" data-filter="all">Всі</button>
         <button class="filter-btn" data-filter="ngo">Проєкти ГО</button>
         <button class="filter-btn" data-filter="supported">Підтримані нами</button>
-        <button class="filter-btn" data-filter="microgrants">Мікрогранти</button>
         <button class="filter-btn" data-filter="education">Освіта</button>
         <button class="filter-btn" data-filter="art">Мистецтво</button>
-        <button class="filter-btn" data-filter="media">Медіа</button>
+        <button class="filter-btn" data-filter="books">Видання</button>
         <button class="filter-btn" data-filter="inclusion">Інклюзія</button>
-        <button class="filter-btn" data-filter="democracy">Демократія</button>
+        <button class="filter-btn" data-filter="research">Дослідження</button>
       </div>
 
       <div class="projects-list" id="projects-list">
