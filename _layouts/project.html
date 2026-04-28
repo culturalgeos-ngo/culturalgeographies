@@ -1,0 +1,38 @@
+---
+layout: default
+---
+
+<div class="page-header">
+  <div class="container--narrow">
+    <p class="page-header__section"><a href="{{ '/proekty/' | relative_url }}">Проєкти</a></p>
+    <h1>{{ page.title }}</h1>
+    <div style="display:flex; gap:0.5rem; flex-wrap:wrap; margin-top:1rem;">
+      {% for tag in page.tags %}
+      <span class="tag">{{ tag }}</span>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+<div class="page-content">
+  <div class="container--narrow">
+
+    {% if page.image %}
+    <img src="{{ page.image | relative_url }}" alt="{{ page.title }}" style="width:100%; margin-bottom:2rem;">
+    {% endif %}
+
+    {{ content }}
+
+    {% if page.partners %}
+    <hr style="border:none; border-top:1px solid var(--gray-200); margin:2rem 0;">
+    <p class="mono">Партнери</p>
+    <p>{{ page.partners | join: ', ' }}</p>
+    {% endif %}
+
+    {% if page.role %}
+    <p class="mono" style="margin-top:1rem;">Роль ГО</p>
+    <p>{{ page.role }}</p>
+    {% endif %}
+
+  </div>
+</div>
