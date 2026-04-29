@@ -1,33 +1,128 @@
---- 
-layout: default 
 ---
-Проєкти / Видання
+layout: default
+---
 
-{{ page.title }}
-{% for tag in page.tags %}
-{{ tag }}
-{% endfor %}
-{% if page.description %}
-{{ page.description }}
+<div class="page-header">
+  <div class="container--narrow">
+    <p class="page-header__section"><a href="{{ '/proekty/' | relative_url }}">Проєкти</a> / <a href="{{ '/proekty/' | relative_url }}">Видання</a></p>
+    <h1>{{ page.title }}</h1>
+    <div style="display:flex; gap:0.5rem; flex-wrap:wrap; margin-top:1rem;">
+      {% for tag in page.tags %}
+      <span class="tag">{{ tag }}</span>
+      {% endfor %}
+    </div>
+  </div>
+</div>
 
-{% endif %} {{ content }} {% if page.pdf %}
-{{ page.title }}
-←
-1 / —
-→
-−
-+
-↓
-Завантаження...
-{% endif %} {% if page.partners %}
-Партнери
+<div class="page-content">
+  <div class="container--narrow">
 
-{{ page.partners | join: ', ' }}
+    {% if page.description %}
+    <p>{{ page.description }}</p>
+    {% endif %}
 
-{% endif %} {% if page.role %}
-Роль ГО
+    {{ content }}
 
-{{ page.role }}
+    {% if page.pdf %}
+    <div class="pdf-viewer-wrap">
+      <div class="pdf-viewer-toolbar">
+        <div class="pdf-viewer-info">
+          <span class="mono">{{ page.title }}</span>
+        </div>
+        <div class="pdf-viewer-controls">
+          <button class="pdf-btn" id="prev-page">←</button>
+          <span class="pdf-page-info mono">
+            <span id="current-page">1</span> / <span id="total-pages">—</span>
+          </span>
+          <button class="pdf-btn" id="next-page">→</button>
+          <button class="pdf-btn" id="zoom-out">−</button>
+          <button class="pdf-btn" id="zoom-in">+</button>
+          <a href="{{ page.pdf | relative_url }}" download class="pdf-btn pdf-btn--download">↓ PDF</a>
+        </div>
+      </div>
+      <div class="pdf-canvas-wrap" id="pdf-canvas-wrap">
+        <canvas id="pdf-canvas"></canvas>
+        <div class="pdf-loading" id="pdf-loading">
+          <span class="mono">Завантаження...</span>
+        </div>
+      </div>
+    </div>
 
-{% endif %}
-{% if page.pdf %} {% endif %}
+    <style>
+    .pdf-viewer-wrap { margin: 2rem 0 3rem; border: 1px solid var(--gray-200); }
+    .pdf-viewer-toolbar { display:flex; align-items:center; justify-content:space-between; padding:0.7rem 1rem; border-bottom:1px solid var(--gray-200); background:var(--gray-100); flex-wrap:wrap; gap:0.5rem; }
+    .pdf-viewer-controls { display:flex; align-items:center; gap:0.4rem; }
+    .pdf-page-info { font-size:0.7rem; color:var(--gray-600); padding:0 0.4rem; }
+    .pdf-btn { font-family:var(--font-mono); font-size:0.7rem; padding:0.3rem 0.7rem; border:1px solid var(--gray-200); background:var(--white); color:var(--black); cursor:pointer; transition:all 0.15s; text-decoration:none; display:inline-flex; align-items:center; }
+    .pdf-btn:hover { background:var(--green-dark); color:var(--white); border-color:var(--green-dark); }
+    .pdf-btn--download { border-color:var(--green-dark); color:var(--green-dark); }
+    .pdf-canvas-wrap { position:relative; background:var(--gray-100); min-height:400px; display:flex; align-items:center; justify-content:center; overflow:auto; }
+    #pdf-canvas { display:block; max-width:100%; box-shadow:0 2px 20px rgba(0,0,0,0.1); margin:1.5rem auto; }
+    .pdf-loading { position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); color:var(--gray-400); }
+    </style>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+    <script>
+    (function() {
+      var pdfUrl = '{{ page.pdf | relative_url }}';
+      pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+      var pdfDoc = null, currentPage = 1, scale = 1.4;
+      var canvas = document.getElementById('pdf-canvas');
+      var ctx = canvas.getContext('2d');
+
+      function renderPage(num) {
+        document.getElementById('pdf-loading').style.display = 'flex';
+        pdfDoc.getPage(num).then(function(page) {
+          var viewport = page.getViewport({ scale: scale });
+          canvas.width = viewport.width;
+          canvas.height = viewport.height;
+          page.render({ canvasContext: ctx, viewport: viewport }).promise.then(function() {
+            document.getElementById('pdf-loading').style.display = 'none';
+            document.getElementById('current-page').textContent = num;
+          });
+        });
+      }
+
+      pdfjsLib.getDocument(pdfUrl).promise.then(function(pdf) {
+        pdfDoc = pdf;
+        document.getElementById('total-pages').textContent = pdf.numPages;
+        renderPage(currentPage);
+      }).catch(function() {
+        document.getElementById('pdf-loading').innerHTML = '<span class="mono" style="color:var(--gray-400)">Не вдалось завантажити PDF</span>';
+      });
+
+      document.getElementById('prev-page').addEventListener('click', function() {
+        if (currentPage <= 1) return;
+        currentPage--; renderPage(currentPage);
+      });
+      document.getElementById('next-page').addEventListener('click', function() {
+        if (currentPage >= pdfDoc.numPages) return;
+        currentPage++; renderPage(currentPage);
+      });
+      document.getElementById('zoom-in').addEventListener('click', function() {
+        scale = Math.min(scale + 0.2, 3); renderPage(currentPage);
+      });
+      document.getElementById('zoom-out').addEventListener('click', function() {
+        scale = Math.max(scale - 0.2, 0.6); renderPage(currentPage);
+      });
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'ArrowRight' && currentPage < pdfDoc.numPages) { currentPage++; renderPage(currentPage); }
+        if (e.key === 'ArrowLeft' && currentPage > 1) { currentPage--; renderPage(currentPage); }
+      });
+    })();
+    </script>
+    {% endif %}
+
+    {% if page.partners %}
+    <hr style="border:none; border-top:1px solid var(--gray-200); margin:2rem 0;">
+    <p class="mono">Партнери</p>
+    <p>{{ page.partners | join: ', ' }}</p>
+    {% endif %}
+
+    {% if page.role %}
+    <p class="mono" style="margin-top:1rem;">Роль ГО</p>
+    <p>{{ page.role }}</p>
+    {% endif %}
+
+  </div>
+</div>
