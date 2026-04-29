@@ -1,15 +1,18 @@
 <header class="site-header">
   <div class="container">
     <a href="{{ '/' | relative_url }}" class="site-logo">
-      Культурні<br>географії
+      <img src="{{ '/assets/images/logo.png' | relative_url }}" alt="Культурні географії" class="site-logo__img">
+      <span class="site-logo__text">Культурні<br>географії</span>
     </a>
     <nav class="site-nav">
       <a href="{{ '/pro-nas/' | relative_url }}" {% if page.url contains 'pro-nas' %}class="active"{% endif %}>Про нас</a>
       <a href="{{ '/proekty/' | relative_url }}" {% if page.url contains 'proekty' %}class="active"{% endif %}>Проєкти</a>
       <a href="{{ '/publikatsii/' | relative_url }}" {% if page.url contains 'publikatsii' %}class="active"{% endif %}>Публікації</a>
       <a href="{{ '/kontakt/' | relative_url }}" {% if page.url contains 'kontakt' %}class="active"{% endif %}>Контакт</a>
-     <a href="{{ '/ua/' | relative_url }}" class="lang-switch">UA</a>
-      <a href="{{ '/en/' | relative_url }}" class="lang-switch">EN</a>
+      <span class="lang-group">
+        <a href="{{ '/ua/' | relative_url }}" class="lang-switch">UA</a>
+        <a href="{{ '/en/' | relative_url }}" class="lang-switch">EN</a>
+      </span>
     </nav>
   </div>
 </header>
