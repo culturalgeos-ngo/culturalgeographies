@@ -1,6 +1,6 @@
 ---
 layout: publication
-title: "Арт-бук "Стихійний архів""
+title: "Арт-бук Стихійний архів"
 date: 2020-10-20
 tags: [ngo, publication]
 role: "Видавець"
