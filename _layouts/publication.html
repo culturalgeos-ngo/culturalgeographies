@@ -1,0 +1,31 @@
+--- layout: default ---
+Проєкти / Видання
+
+{{ page.title }}
+{% for tag in page.tags %}
+{{ tag }}
+{% endfor %}
+{% if page.description %}
+{{ page.description }}
+
+{% endif %} {{ content }} {% if page.pdf %}
+{{ page.title }}
+←
+1 / —
+→
+−
++
+↓
+Завантаження...
+{% endif %} {% if page.partners %}
+Партнери
+
+{{ page.partners | join: ', ' }}
+
+{% endif %} {% if page.role %}
+Роль ГО
+
+{{ page.role }}
+
+{% endif %}
+{% if page.pdf %} {% endif %}
