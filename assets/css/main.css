@@ -13,7 +13,7 @@
   --gray-400: #a0a090;
   --gray-600: #666660;
   --accent: #1a1a1a;
-  --green-dark: #1a3a2e;
+  --green-dark: #4f7942;
   --green-mid: #2d5a47;
   --font-serif: 'Spectral', Georgia, serif;
   --font-mono: 'IBM Plex Mono', monospace;
@@ -112,17 +112,29 @@ a:hover { border-color: var(--black); }
 }
  
 .site-logo {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  border: none;
+}
+
+.site-logo:hover { border: none; opacity: 0.7; }
+
+.site-logo__img {
+  height: 36px;
+  width: auto;
+  display: block;
+}
+
+.site-logo__text {
   font-family: var(--font-mono);
   font-size: 0.75rem;
   font-weight: 300;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: var(--black);
-  border: none;
   line-height: 1.4;
+  color: var(--black);
 }
- 
-.site-logo:hover { border: none; opacity: 0.7; }
  
 .site-nav {
   display: flex;
@@ -143,14 +155,19 @@ a:hover { border-color: var(--black); }
  
 .site-nav a:hover,
 .site-nav a.active { color: var(--black); }
- 
-.lang-switch {
+
+ .lang-switch {
   font-family: var(--font-mono);
   font-size: 0.7rem;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--gray-400);
   border: none;
+}
+
+.lang-group {
+  display: flex;
+  gap: 0.3rem;
   margin-left: var(--space-sm);
   padding-left: var(--space-sm);
   border-left: 1px solid var(--gray-200);
