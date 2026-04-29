@@ -2,7 +2,7 @@
 layout: publication
 title: "Арт-бук Стихійний архів"
 date: 2020-10-20
-tags: [ngo, publication]
+tags: [ngo, book]
 role: "Видавець"
 pdf: "/assets/publications/spontaneous_archive_compressed.pdf"
 image: "/oldsite/wp-content/uploads/2021/10/kinography.jpg"
