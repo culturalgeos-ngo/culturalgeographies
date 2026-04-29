@@ -19,10 +19,6 @@ lang: uk
         <span class="hero__stat-number">20+</span>
         <span class="hero__stat-label">Проєктів</span>
       </div>
-      <div class="hero__stat">
-        <span class="hero__stat-number">3</span>
-        <span class="hero__stat-label">Міста</span>
-      </div>
     </div>
   </div>
 </section>
@@ -64,12 +60,14 @@ lang: uk
   <div class="container">
     <p class="partners-strip__label">Партнери та підтримка</p>
     <ul class="partners-strip__list">
-      <li>British Council</li>
-      <li>PinchukArtCentre</li>
-      <li>Docudays UA</li>
       <li>Ukrainian Cultural Foundation</li>
+      <li>British Council</li>
+      <li>Galeria Labirynt</li>
+      <li>Docudays UA</li>
+      <li>86 Festival</li>
       <li>Contemporary Art Center Zaporizhzhia</li>
-      <li>Dniproprostor</li>
+      <li>DCCC</li>
+      <li>PinchukArtCentre</li>
     </ul>
   </div>
 </section>
