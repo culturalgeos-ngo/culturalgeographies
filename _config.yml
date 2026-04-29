@@ -38,6 +38,15 @@ defaults:
 
 # Exclude
 exclude:
-  - Gemfile
+- Gemfile
   - Gemfile.lock
   - README.md
+  - oldsite/wp-includes
+  - oldsite/wp-admin
+  - oldsite/blog
+  - oldsite/feed
+  - oldsite/comments
+  - oldsite/en
+  - oldsite/komanda
+  - oldsite/kontakti
+  - oldsite/proekti
