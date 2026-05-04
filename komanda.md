@@ -20,7 +20,7 @@ permalink: /komanda/
       <div class="team-grid">
 
         <div class="team-card">
-          <img src="assets/images/team/maryna-khrypun.jpg" alt="Марина Хрипун" class="team-card__photo">
+          <img src="../assets/images/team/valeria-karpan.jpg" alt="Марина Хрипун" class="team-card__photo">
           <h3 class="team-card__name">Марина Хрипун</h3>
           <p class="team-card__role">Директорка, кураторка</p>
           <p class="team-card__bio">
