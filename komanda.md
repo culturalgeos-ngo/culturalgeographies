@@ -29,7 +29,7 @@ permalink: /komanda/
         </div>
 
         <div class="team-card">
-          <img src="../assets/images/team/valeria-karpan.jpg" alt="Валерія Карпань" class="team-card__photo">
+          <img src="culturalgeographies/assets/images/team/valeria-karpan.jpg" alt="Валерія Карпань" class="team-card__photo">
           <h3 class="team-card__name">Валерія Карпань</h3>
           <p class="team-card__role">Співзасновниця, художниця, кураторка</p>
           <p class="team-card__bio">
